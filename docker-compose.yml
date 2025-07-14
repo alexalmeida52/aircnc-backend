@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: semana09
+    ports:
+      - "27017:27017"
+    volumes:
+      - semana09_data:/data/db
+
+  app:
+    build: .
+    container_name: aircnc-backend
+    ports:
+      - "3333:3333"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/semana09db
+    depends_on:
+      - mongo
+
+volumes:
+  semana09_data:
