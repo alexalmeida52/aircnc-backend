@@ -46,3 +46,4 @@ cd aircnc/backend
 
 # Instale as dependências
 npm install
+```
